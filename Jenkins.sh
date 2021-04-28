@@ -4,8 +4,8 @@ do
   echo $output
   usep=$(echo $output | awk '{ print $1}' | cut -d'%' -f1  )
   partition=$(echo $output | awk '{ print $2 }' )
-  echo "Disk Space is fine total $usep percent used in /root on $(hostname) as on $(date)"
-  if [ $usep -ge 20 ]; then
+  echo "Disk Space is fine total $usep percent used in /root on $(hostname -i) as on $(date)"
+  if [ $usep -ge 10 ]; then
     echo "Running out of space \"$partition ($usep%)\ on $(hostname) as on $(date)" |
      mail -s "Alert: Almost out of disk space $usep%" xyz@abc.com
   fi
